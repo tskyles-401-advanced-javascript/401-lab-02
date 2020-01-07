@@ -4,7 +4,7 @@
   "description": "Classes, Inheritance, Functional Programming",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node classes/index.js",
     "lint": "eslint **/*.js",
     "test": "jest --verbose --coverage",
     "test-watch": "jest --watchAll --verbose --coverage",
