@@ -6,7 +6,7 @@
 
 ### Links and Resources
 
-- [submission PR](http://xyz.com)
+- [submission PR](https://github.com/tskyles-401-advanced-javascript/401-lab-02/pull/2)
 - [travis](https://travis-ci.com/tskyles-401-advanced-javascript/401-lab-02)
 
 
@@ -33,3 +33,4 @@ tests - npm test
 #### UML
 
 ![](./assets/lab2.jpg)
+
