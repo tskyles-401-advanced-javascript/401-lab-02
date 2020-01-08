@@ -128,11 +128,6 @@ describe('validates the basic schema', () => {
 
 });
 
-
-
-
-
-
 describe('validator module performs complex validations', () => {
   const testTypes = {
     id: 50,
@@ -165,7 +160,7 @@ describe('validator module performs complex validations', () => {
     expect(validator.isArray(testArr, 'string')).toBeFalsy();
     expect(validator.isArray(testArr, 'number')).toBeTruthy();
   });
-  
+
   // TODO: Cover so, so many more cases
 
 });
