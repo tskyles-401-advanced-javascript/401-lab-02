@@ -129,29 +129,43 @@ describe('validates the basic schema', () => {
 });
 
 
+
+
+
+
 describe('validator module performs complex validations', () => {
-
-  it('validates the presence of required object properties at any level', () => {
-    // i.e. does person.hair.color exist and have a good value, not just person.hair
-    expect(true).toBeFalsy();
-  });
-
-
+  const testTypes = {
+    id: 50,
+    name: 102,
+    age: [3,5,6,4],
+    children: 5,
+  };
+  const susan = {
+    id: '123-45-6789',
+    name: 'Susan McDeveloperson',
+    age: 37,
+    children: [],
+  };
   it('validates the proper types of object properties', () => {
     // i.e. person.name must be a string, etc.
-    expect(true).toBeFalsy();
+
+    expect(validator.isString(testTypes.id)).toBeFalsy();
+    expect(validator.isString(testTypes.name)).toBeFalsy();
+    expect(validator.isArray(testTypes.children, 'string')).toBeFalsy();
+    expect(validator.isNumber(testTypes.age)).toBeFalsy();
+    expect(validator.isString(susan.id)).toBeTruthy();
+    expect(validator.isString(susan.name)).toBeTruthy();
+    expect(validator.isArray(susan.children, 'string')).toBeTruthy();
+    expect(validator.isNumber(susan.age)).toBeTruthy();
   });
 
   it('validates the types of values contained in an array', () => {
     // i.e. an array of all strings or numbers
-    expect(true).toBeFalsy();
+    const testArr = [1,2,3,4];
+    expect(validator.isArray(testArr, 'string')).toBeFalsy();
+    expect(validator.isArray(testArr, 'number')).toBeTruthy();
   });
-
-  it('validates a value array against an approved list', () => {
-    // i.e. a string might only be allowed to be "yes" or "no"
-    expect(true).toBeFalsy();
-  });
-
+  
   // TODO: Cover so, so many more cases
 
 });
