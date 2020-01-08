@@ -9,6 +9,34 @@ let validator = module.exports = {};
  * @param rules
  * @returns {boolean}
  */
+class Validator {
+  constructor(schema, input){
+    this.schema = schema;
+    this.input = input;
+  }
+  isValid(this.schema, this.input){
+    let valid = true;
+    for(let fieldName in schema.fields){
+      let field = schema.fields[fieldName];
+      // am i required and set?
+      let required = field.required
+        ?validator.isTruthy(input[fieldName])
+        :true;
+      // am i the right type?
+      // code through all the fields and check if type is correct
+      let type = field.type
+        ?validator.isCorrectType(input[fieldName], field)
+        :true;
+      if(!(required && type)){
+        valid = false;
+      }
+    }
+    return valid;
+  }
+  isString(input){
+
+  }
+}
 validator.isValid = (schema, input) => {
   
   let valid = true;
@@ -54,24 +82,24 @@ validator.isObject = (input) => {
 };
 
 validator.isArray = (input, valueType) => {
-  return Array.isArray(input) && (valueType? input.every(val => typeof val === valueType): true)
+  return Array.isArray(input) && (valueType? input.every(val => typeof val === valueType): true);
 };
 
 validator.isBoolean = (input) => {
   return typeof input === 'boolean';
-} 
+}; 
 
 validator.isNumber = (input) => {
-  return typeof input ==='number'
-}
+  return typeof input ==='number';
+};
 
 validator.isFunction = (input) => {
   return typeof input === 'function';
-}
+};
 
 validator.isTruthy = (input) => {
   return !!input;
-}
+};
 
 validator.isCorrectType = (input, field)  => {
    
@@ -84,4 +112,4 @@ validator.isCorrectType = (input, field)  => {
   default: return false;
   }
 
-}
+};
