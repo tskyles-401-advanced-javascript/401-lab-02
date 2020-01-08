@@ -12,11 +12,13 @@
 
 #### Documentation
 
-- JSDoc Comment Required for all modules and functions in all .js files
+- `jsdocs` live-server from `/docs` directory
 
 ### Modules
 
 validator.js
+vehicle-class.js
+vehicle-constructor.js
 
 #### How to initialize/run your server app (where applicable)
 - clone repository
@@ -30,4 +32,4 @@ tests - npm test
 
 #### UML
 
-![](assets/lab2.jpg)
+![](./assets/lab2.jpg)
