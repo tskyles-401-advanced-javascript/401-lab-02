@@ -17,12 +17,12 @@ class Validator {
       let field = schema.fields[fieldName];
       // am i required and set?
       let required = field.required
-        ?validator.isTruthy(input[fieldName])
+        ?this.isTruthy(input[fieldName])
         :true;
       // am i the right type?
       // code through all the fields and check if type is correct
       let type = field.type
-        ?validator.isCorrectType(input[fieldName], field)
+        ?this.isCorrectType(input[fieldName], field)
         :true;
       if(!(required && type)){
         valid = false;
@@ -53,11 +53,11 @@ class Validator {
   }
   isCorrectType(input, field){
     switch(field.type) {
-    case 'string': return Validator.isString(input);
-    case 'number': return Validator.isNumber(input);
-    case 'array': return Validator.isArray(input, field.valueType);
-    case 'object': return Validator.isObject(input);
-    case 'boolean': return Validator.isBoolean(input);
+    case 'string': return this.isString(input);
+    case 'number': return this.isNumber(input);
+    case 'array': return this.isArray(input, field.valueType);
+    case 'object': return this.isObject(input);
+    case 'boolean': return this.isBoolean(input);
     default: return false;
     }
   }
